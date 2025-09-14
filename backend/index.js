@@ -4,8 +4,8 @@ import mongoose from "mongoose";
 import fileUpload from "express-fileupload";
 import { v2 as cloudinary } from "cloudinary";
 import cookieParser from "cookie-parser";
-import userRoute from "./routes/user.route.js";
-import blogRoute from "./routes/blog.route.js";
+// import userRoute from "./routes/user.route.js";
+// import blogRoute from "./routes/blog.route.js";
 
 import cors from "cors";
 const app = express();
@@ -42,8 +42,8 @@ try {
 }
 
 // defining routes
-app.use("/api/users", userRoute);
-app.use("/api/blogs", blogRoute);
+// app.use("/api/users", userRoute);
+// app.use("/api/blogs", blogRoute);
 // Cloudinary
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
