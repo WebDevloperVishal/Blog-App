@@ -35,9 +35,9 @@ app.use(
 // DB Code
 try {
   mongoose.connect(MONOGO_URL);
-  console.log("Conntected to MonogDB✅");
+  console.log("Conntected to MonogoDB✅");
 } catch (error) {
-  console.log(error);
+  console.log("Connection losed to MonogoDB ❌");
 }
 
 // defining routes
