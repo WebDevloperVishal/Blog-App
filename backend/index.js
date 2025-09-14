@@ -18,26 +18,27 @@ const MONOGO_URL = process.env.MONOG_URI;
 app.use(express.json());
 app.use(cookieParser());
 app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
+    cors({
+        origin: process.env.FRONTEND_URL,
+        credentials: true,
+        methods: ["GET", "POST", "PUT", "DELETE"],
+    })
 );
 
 app.use(
-  fileUpload({
-    useTempFiles: true,
-    tempFileDir: "/tmp/",
-  })
+    fileUpload({
+        useTempFiles: true,
+        tempFileDir: "/tmp/",
+    })
 );
 
 // DB Code
 try {
-  mongoose.connect(MONOGO_URL);
-  console.log("Conntected to MonogoDB✅");
+    mongoose.connect(MONOGO_URL);
+    console.log("Conntected to MonogoDB✅");
 } catch (error) {
-  console.log("Connection losed to MonogoDB ❌");
+    console.log("Connection failed to MongoDB ❌");
+    console.log("Error:", error.message);
 }
 
 // defining routes
@@ -45,11 +46,11 @@ app.use("/api/users", userRoute);
 app.use("/api/blogs", blogRoute);
 // Cloudinary
 cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.CLOUD_API_KEY,
-  api_secret: process.env.CLOUD_SECRET_KEY,
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_SECRET_KEY,
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port}`);
 });
